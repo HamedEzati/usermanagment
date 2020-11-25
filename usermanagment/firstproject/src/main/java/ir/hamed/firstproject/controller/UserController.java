@@ -60,7 +60,7 @@ public class UserController {
 
     // find user by id(username)
     @RequestMapping(value = "/{username}",method = RequestMethod.GET)
-    public String getUser(@PathVariable String username){
+    public String getUser(@PathVariable(value = "username") String username){
         if(userRepository.findById(username).isPresent()){
             Optional<User> user = userRepository.findById(username);
             return new Gson().toJson(user);
